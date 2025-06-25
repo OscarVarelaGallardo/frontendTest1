@@ -5,15 +5,20 @@ import circleBlue from '../assets/icons/circle-blue.svg';
 import circleGray from '../assets/icons/circle-gray.svg';
 import circleEmpty from '../assets/icons/circle-empty.svg';
 
+import { useNavigate } from 'react-router-dom';
 import './OrderDetails.css';
 
+
 const OrderDetails = () => {
+    const navigate = useNavigate();
     return (
 
         <>
-            <div className="orders-page-container">
+            <div className="orders-page-container-details">
                 <div className="orders-page-header">
-                    <img src={iconBack} alt="Back Icon" className="back-icon" />
+                    <img src={iconBack}
+                        onClick={() => { navigate('/') }}
+                        alt="Back Icon" className="back-icon" />
                     <h2 className="orders-page-title">
                         Cargo Details</h2>
                     <img src={bell} alt="Bell Icon" className="icon-bell" />
