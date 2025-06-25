@@ -1,0 +1,100 @@
+.orders-page-container {}
+
+.order-page-card {
+    padding: 20px;
+
+}
+
+.order-page-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    padding: 0;
+}
+
+.order-page-card-body-title {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    justify-content: start;
+    width: 100%;
+}
+
+.order-page-card-header-title-number {
+    font-size: 13.1px;
+}
+
+.order-page-card-header-title {
+    font-size: 17.5px;
+    font-weight: 600;
+
+}
+
+.order-page-card-body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.order-page-card-body-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: space-around;
+
+
+}
+
+.car-yellow {
+    color: #f1c40f;
+
+
+}
+
+.order-page-card-body-items {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    grid-column: span 2;
+}
+
+.order-page-card-body-items-header {
+    color: #4C4D4E;
+    font-size: 11.2px;
+    font-weight: 800;
+}
+
+
+
+
+.order-page-card-body-items-header span {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.order-page-card-body-items-time {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    background-color: #16191CFE;
+    padding:  0px 2px;
+    width: 15vh;
+    height: 20px;
+    border-radius: 50px 50px 50px 50px;
+
+}
+
+.order-page-card-body-items-time p {
+    font-size: 11px;
+   
+    color: #868889;
+    font-weight: 600;
+}
