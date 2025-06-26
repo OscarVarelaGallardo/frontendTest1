@@ -29,6 +29,7 @@
             rgba(255, 255, 255, 0.2) 70%,
             transparent 100%)1;
 }
+
 .order-details-card-timeline {
     border: 1px solid #e0e0e0;
     border-radius: 50%;
@@ -146,7 +147,7 @@
     font-weight: 800;
 }
 
-.order-details-tracking-status{
+.order-details-tracking-status {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
@@ -158,10 +159,12 @@
     align-items: center;
     gap: 8px;
 }
-.order-details-tracking-status-item-text{
+
+.order-details-tracking-status-item-text {
     grid-row: span 2;
-    
+
 }
+
 .circle-item {
     width: 32px;
     height: 32px;
@@ -172,7 +175,7 @@
     justify-content: center;
 }
 
-.unchecked-icon{
+.unchecked-icon {
     width: 32px;
     height: 32px;
 }
@@ -185,12 +188,34 @@
     align-items: center;
     margin-top: 16px;
     border-radius: 0 0 8px 8px;
-   
+
 }
+
 .order-details-tracking-status-footer p {
     font-size: 20px;
-    font-weight: 800    ;
+    font-weight: 800;
     color: #080C0F;
     font-weight: bold;
     padding: 0px;
+}
+
+.order-details-pickData {
+    padding-top: 30px;
+    border: #e0e0e0 solid 1px;
+    border-radius: 32px;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.order-details-pickData-content {
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    margin-top: 20px;
 }

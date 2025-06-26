@@ -102,14 +102,36 @@ const OrderDetails = () => {
                     <div className='order-details-tracking-status-footer'>
                         <p>Track Order</p>
                     </div>
-                    
+
                 </div>
-                <div className='order-details-pickData'>
+                <div className='order-details-pickData'
+                    //separa el contenido de la parte superior
+                    style={{ marginTop: '20px'}}  
+                >
                     <p>Pickup Data</p>
-                        <img src={arrowUp} alt="Arrow up" className='arrow-up' />
+                    <img src={arrowUp} alt="Arrow up" className='arrow-up' />
+                </div>
+                <div className='order-details-pickData-content'
+
+                >
+                    <p className='order-details-pickData-text'>
+                        Isidro Fabela 10, Valle Verde y Terminal,
+                        50140 Toluca de Lerdo, México
+                    </p>
+                    <p>
+                        14 de Octubre 2023
+                    </p>
+                    <p>
+                        +525567890346
+                    </p>
+                    <p>johndoe@gmail.com</p>
+
+
                 </div>
 
             </div>
+            
+           
 
         </>
     )
