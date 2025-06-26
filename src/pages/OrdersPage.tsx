@@ -75,6 +75,7 @@ const OrderPage = () => {
         </div>
       </div>
       <div className="orders-page-search">
+        
         <img src={searchIcon} alt="Search Icon" className="search-icon" />
         <input type="text" className="search-input"
           placeholder="Search by order number, destination, or date"
