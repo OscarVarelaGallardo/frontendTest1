@@ -30,7 +30,7 @@ const OrderPage = () => {
 
         setOrders(orders.result);
         setfetchAllOrders(orders.result);
-        console.log('Orders fetched successfully:', orders.result);
+
       } catch (error) {
         console.error('Error fetching orders:', error);
       }

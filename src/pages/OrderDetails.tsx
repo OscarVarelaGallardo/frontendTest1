@@ -30,14 +30,12 @@ const OrderDetails = () => {
                 setOrders(response.result);
             } catch (error) {
                 console.error("Error fetching order details:", error);
-            } finally {
-                console.log("Fetch order details completed");
-            }
+            } 
         };
 
         if (orderId) {
             setNumberOrder(orderId);
-            console.log(`Order ID from params: ${orderId}`);
+          
             fetchOrderDetails();
         }
     }, [orderId]);
@@ -46,7 +44,7 @@ const OrderDetails = () => {
         if (orders && numberOrder) {
             const foundOrder = filterOrderById(orders, numberOrder);
             if (foundOrder) {
-                console.log(`Order found:`, foundOrder);
+              
 
                 setOrderDetails(foundOrder);
             } else {
@@ -153,10 +151,10 @@ const OrderDetails = () => {
                         }</p>
                     </div>
                     {orderDetails && (
-                        orderDetails.map((orderDetails) => (
-                            <>
-                                <div className='order-details-tracking-status' >
-                                    <div className='order-details-tracking-status-item' key={orderDetails._id}>
+                        orderDetails.map((orderDetails, index) => (
+                            <div key={index}>   
+                                <div className='order-details-tracking-status'  >
+                                    <div className='order-details-tracking-status-item'  >
                                         <div className='circle-item' style={{ backgroundColor: orderDetails.status >= 1 ? '#FFEE00' : 'gray' }}>
                                             <img src={checked} alt="Checked Icon" className='checked-icon' />
                                         </div>
@@ -189,8 +187,9 @@ const OrderDetails = () => {
                                 <div className='order-details-tracking-status-footer'>
                                     <p>Track Order</p>
                                 </div>
+                                </div>
 
-                            </>
+                           
 
                         ))
                     )}
