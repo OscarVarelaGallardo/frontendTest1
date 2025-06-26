@@ -25,6 +25,10 @@ type OrderDetailsDTO = {
         photo?: string;
     };
     status: number;
+    end_date?: string;
+    phone?: string;
+    email?: string;
+
 };
 
 const OrderDetails = () => {
@@ -225,10 +229,10 @@ const OrderDetails = () => {
                                 month: 'long',
                                 day: 'numeric',
                             })}</p>
-                            <p className='order-details-pickData-item-phone'> {order.destinations[0]?.phone || '+525567890346'}
+                            <p className='order-details-pickData-item-phone'> {order.phone || '+525567890346'}
 
                             </p>
-                            <p className='order-details-pickData-item-email'> {order.destinations[0]?.email || 'johndoe@gmail.com'}</p>
+                            <p className='order-details-pickData-item-email'> {order.email || 'johndoe@gmail.com'}</p>
                         </div>
                     ))}
                 </div>}
