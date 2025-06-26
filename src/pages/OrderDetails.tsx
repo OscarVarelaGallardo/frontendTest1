@@ -42,12 +42,12 @@ const OrderDetails = () => {
                 setOrders(response.result);
             } catch (error) {
                 console.error("Error fetching order details:", error);
-            } 
+            }
         };
 
         if (orderId) {
             setNumberOrder(orderId);
-          
+
             fetchOrderDetails();
         }
     }, [orderId]);
@@ -56,7 +56,7 @@ const OrderDetails = () => {
         if (orders && numberOrder) {
             const foundOrder = filterOrderById(orders, numberOrder);
             if (foundOrder) {
-              
+
 
                 setOrderDetails(foundOrder);
             } else {
@@ -66,9 +66,9 @@ const OrderDetails = () => {
     }, [orders, numberOrder]);
     const handleShowDetails = () => {
         setShowDetails(!showDetails);
-   
+
     }
-    const filterOrderById = (ordersList: OrderDetailsDTO[], id: string)  => {
+    const filterOrderById = (ordersList: OrderDetailsDTO[], id: string) => {
         return ordersList
             .filter(order => order.order_number?.toLowerCase() === id.toLowerCase())
             .map(order => ({
@@ -164,7 +164,7 @@ const OrderDetails = () => {
                     </div>
                     {orderDetails && (
                         orderDetails.map((orderDetails, index) => (
-                            <div key={index}>   
+                            <div key={index}>
                                 <div className='order-details-tracking-status'  >
                                     <div className='order-details-tracking-status-item'  >
                                         <div className='circle-item' style={{ backgroundColor: orderDetails.status >= 1 ? '#FFEE00' : 'gray' }}>
@@ -172,17 +172,17 @@ const OrderDetails = () => {
                                         </div>
                                         <div className='circle-item' style={{ backgroundColor: orderDetails.status >= 2 ? '#FFEE00' : 'gray' }}>
                                             <img src={checked} alt="Checked Icon" className='checked-icon' />
-                                            
+
                                         </div>
                                         <div className='circle-item' style={{ backgroundColor: orderDetails.status >= 3 ? '#FFEE00' : 'gray' }} >
                                             <img src={checked} alt="Checked Icon" className='checked-icon' />
                                         </div>
-                                        <img src={unchecked} alt="Unchecked Icon" className='unchecked-icon'  />
+                                        <img src={unchecked} alt="Unchecked Icon" className='unchecked-icon' />
                                     </div>
                                     <div className='order-details-tracking-status-item-text'>
                                         <p className='order-details-tracking-status-item-text'
                                             style={{ color: orderDetails.status >= 1 ? '#FFEE00' : 'gray' }}>
-                                        Created Order</p>
+                                            Created Order</p>
                                         <p className='order-details-tracking-status-item-text'
                                             style={{ color: orderDetails.status >= 2 ? '#FFEE00' : 'gray' }}>
                                             Accepted Order</p>
@@ -199,39 +199,39 @@ const OrderDetails = () => {
                                 <div className='order-details-tracking-status-footer'>
                                     <p>Track Order</p>
                                 </div>
-                                </div>
+                            </div>
 
-                           
+
 
                         ))
                     )}
                 </div>
-                <div className='order-details-pickData'
-                    //separa el contenido de la parte superior
-                    style={{ marginTop: '20px' }}
-                >
+                <div className='order-details-pickData-button'style={{ marginTop: '20px' }}>
                     <p>Pickup Data</p>
                     <div onClick={handleShowDetails}>
                         <img src={arrowUp} alt="Arrow up" className='arrow-up' />
                     </div>
-                  
+
                 </div>
                 {showDetails && <div className='order-details-pickData-content'>
-                    <p className='order-details-pickData-text'>
-                        Isidro Fabela 10, Valle Verde y Terminal,
-                        50140 Toluca de Lerdo, México
-                    </p>
-                    <p>
-                        14 de Octubre 2023
-                    </p>
-                    <p>
-                        +525567890346
-                    </p>
-                    <p>johndoe@gmail.com</p>
+                    {orderDetails.map((order, index) => (
+                        <div key={index} className='order-details-pickData-item'>
 
+                            <p className='order-details-pickData-item-address'> {order.destinations[0]?.address || 'Unknown Address'}</p>
+                            <p className='order-details-pickData-item-date'> {new Date(
+                                order.end_date || new Date() 
+                            ).toLocaleDateString('es-MX', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric',
+                            })}</p>
+                            <p className='order-details-pickData-item-phone'> {order.destinations[0]?.phone || '+525567890346'}
 
-                </div>
-                }
+                            </p>
+                            <p className='order-details-pickData-item-email'> {order.destinations[0]?.email || 'johndoe@gmail.com'}</p>
+                        </div>
+                    ))}
+                </div>}
 
             </div>
 
