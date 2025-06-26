@@ -4,7 +4,7 @@ import iconBack from '../assets/icons/icon-back.svg'
 import searchIcon from '../assets/icons/search-icon.svg'
 import { getAllOrders } from '../api'
 import Order from '../components/Order'
-import {  useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const OrderPage = () => {
   const [orders, setOrders] = useState<OrderDTO[]>([]);
@@ -16,7 +16,7 @@ const OrderPage = () => {
     destination: string;
     date: string;
     status: string;
-    
+
   };
   useEffect(() => {
     const fetchOrders = async () => {
@@ -80,12 +80,12 @@ const OrderPage = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
-     
+
       <Order
-          orders={orders}
+        orders={orders}
       />
 
-    
+
     </div>
 
 

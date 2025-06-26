@@ -26,8 +26,8 @@ type OrderProps = {
 };
 const Order = (orders: OrderProps['orders']) => {
     const navigate = useNavigate();
-    const handleButtonClick = () => {
-        navigate('/details');
+    const handleButtonClick = ( order_number : string)  => {
+        navigate('/details/' + order_number);
     };
 
     useEffect(() => {
@@ -183,18 +183,18 @@ const Order = (orders: OrderProps['orders']) => {
                                         </div> :
                                         <>
                                             {validateTimeToPickUp(order.destinations[0]?.start_date) ?
-                                                
+
                                                 <button className='order-page-card-button-primary'>
                                                     <p className='order-page-card-button-primary-text'>
                                                         Start to pickup in <span className='order-page-card-button-primary-time'>
                                                             {Math.ceil(getRemainingTime(order.destinations[0]?.start_date) / 1000 / 60)}
                                                         </span> minutes
                                                     </p>
-                                                </button>:
+                                                </button> :
                                                 <button className='order-page-card-button-secondary'>
-                                                    
-                                                        Is time to pickup
-                                                    
+
+                                                    Is time to pickup
+
                                                 </button>
                                             }
 
@@ -206,7 +206,8 @@ const Order = (orders: OrderProps['orders']) => {
 
 
                                 <button className='order-page-card-button-secondary'
-                                    onClick={handleButtonClick}>
+                                    onClick={() => handleButtonClick(order.order_number)}
+                                >
                                     Resumen
                                     <img src={eyeIcon} alt="Eye Icon" className='order-page-card-button-icon' />
 
