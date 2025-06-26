@@ -14,11 +14,23 @@ import { useNavigate, useParams } from 'react-router-dom';
 import './OrderDetails.css';
 import { useEffect, useState } from 'react';
 
+//Define types for order details
+type OrderDetailsDTO = {
+    _id: string;
+    order_number: string;
+    destinations: Array<{
+        address: string;
+    }>;
+    user?: {
+        photo?: string;
+    };
+    status: number;
+};
 
 const OrderDetails = () => {
-    const [orders, setOrders] = useState(null);
+    const [orders, setOrders] = useState<OrderDetailsDTO[]>([]);
     const [numberOrder, setNumberOrder] = useState('');
-    const [orderDetails, setOrderDetails] = useState([]);
+    const [orderDetails, setOrderDetails] = useState<OrderDetailsDTO[]>([]);
     const [showDetails, setShowDetails] = useState(false);
     const navigate = useNavigate();
     const { orderId } = useParams();
@@ -56,7 +68,7 @@ const OrderDetails = () => {
         setShowDetails(!showDetails);
    
     }
-    const filterOrderById = (ordersList, id) => {
+    const filterOrderById = (ordersList: OrderDetailsDTO[], id: string)  => {
         return ordersList
             .filter(order => order.order_number?.toLowerCase() === id.toLowerCase())
             .map(order => ({
