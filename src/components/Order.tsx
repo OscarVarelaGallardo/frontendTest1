@@ -6,6 +6,7 @@ import truck from '../assets/icons/truck.svg';
 import locationIcon from '../assets/icons/location.svg';
 import eyeIcon from '../assets/icons/eye.svg';
 import fullTruck from '../assets/icons/full-truck.svg'
+import line from '../assets/icons/line.svg';
 import { useEffect } from 'react';
 import './Order.css';
 import { useNavigate } from 'react-router-dom';
@@ -26,7 +27,7 @@ type OrderProps = {
 };
 const Order = (orders: OrderProps['orders']) => {
     const navigate = useNavigate();
-    const handleButtonClick = ( order_number : string)  => {
+    const handleButtonClick = (order_number: string) => {
         navigate('/details/' + order_number);
     };
 
@@ -110,68 +111,65 @@ const Order = (orders: OrderProps['orders']) => {
                         </div>
                         <hr className='order-page-card-divider'></hr>
                         {/* Order Details Section */}
+
                         <div className='order-page-card-content'>
-                            <div className='order-page-card-info'>
+
+
+                            <div className='order-page-card-icons'>
                                 <img src={truck} alt="Truck Icon"
-                                    style={{
-                                        width: '24px', height: '24px'
-                                    }}
+                                    style={{ width: '34px', height: '34px' }}
                                     className='order-page-card-truck-icon' />
-                                <div className='order-page-card-details'>
-
-
-                                    <p className='order-page-card-title'>
-                                        <span className='order-page-card-shadow'>PICKUP</span>
-                                        {order.destinations[0]?.address.split(',')[2].split(' ')[2] + "," + order.destinations[1]?.address.split(',')[4] || 'Unknown Location'}
-                                        <span className='order-page-card-shadow'>
-                                            {
-                                                order.destinations[0]?.address || 'Unknown Location'
-                                            }
-                                        </span>
-                                    </p>
-
-                                </div>
-                                <div className='order-page-card-date-time'>
-                                    <p className='order-page-card-date'>
-                                        {formatedDate(order.destinations[0]?.start_date) || 'Unknown Date'}
-                                    </p>
-                                    <p className='order-page-card-hour'>
-                                        {formattedHours(order.destinations[0]?.start_date) || 'Unknown Time'}
-                                    </p>
-                                </div>
+                                <img src={line} alt="Line Icon" className='order-page-card-line-icon' />
+                                <img src={locationIcon} alt="Location Icon" style={{ width: '34px', height: '34px' }} className='order-page-card-truck-icon' />
                             </div>
-                            <div className='order-page-card-info'>
-                                <img src={locationIcon} alt="Location Icon" style={{ width: '24px', height: '24px' }} className='order-page-card-truck-icon' >
-                                </img>
-                                <div className='order-page-card-details'>
-                                    <p className='order-page-card-title'>
-                                        <span className='order-page-card-shadow'>DROPOFF</span>
-
+                            <div className='order-page-card-details'>
+                                <p className='order-page-card-title'>
+                                    <span className='order-page-card-shadow'>PICKUP</span>
+                                    {order.destinations[0]?.address.split(',')[2].split(' ')[2] + "," + order.destinations[1]?.address.split(',')[4] || 'Unknown Location'}
+                                    <span className='order-page-card-shadow'>
                                         {
-                                            order.destinations[1]?.address.split(',')[1].split(' ')[1] + " " + order.destinations[1]?.address.split(',')[1].split(' ')[2] + "," +
-                                            order.destinations[1]?.address.split(',')[4] || 'Unknown Location'}
+                                            order.destinations[0]?.address || 'Unknown Location'
+                                        }
+                                    </span>
+                                </p>
+                                <p className='order-page-card-title'>
+                                    <span className='order-page-card-shadow'>DROPOFF</span>
 
-                                        <span className='order-page-card-shadow'>
-                                            {
-                                                order.destinations[1]?.address || 'Unknown Location'
+                                    {
+                                        order.destinations[1]?.address.split(',')[1].split(' ')[1] + " " + order.destinations[1]?.address.split(',')[1].split(' ')[2] + "," +
+                                        order.destinations[1]?.address.split(',')[4] || 'Unknown Location'}
 
-                                            }
-                                        </span>
-                                    </p>
-                                </div>
-                                <div className='order-page-card-date-time'>
-                                    <p className='order-page-card-date'>
-                                        {formatedDate(order.destinations[0]?.end_date) || 'Unknown Date'}
-                                    </p>
-                                    <p className='order-page-card-hour'>
-                                        {formattedHours(order.destinations[0]?.end_date) || 'Unknown Time'}
-                                    </p>
+                                    <span className='order-page-card-shadow'>
+                                        {
+                                            order.destinations[1]?.address || 'Unknown Location'
 
-                                </div>
+                                        }
+                                    </span>
+                                </p>
 
                             </div>
+                            <div className='order-page-card-date-time'>
+                                <p className='order-page-card-date'>
+                                    {formatedDate(order.destinations[0]?.start_date) || 'Unknown Date'}
+                                    <br />
+                                    <span>
+                                        {formattedHours(order.destinations[0]?.start_date) || 'Unknown Time'}
+                                    </span>
+                                </p>
+                                <p className='order-page-card-hour'>
 
+                                </p>
+                                <p className='order-page-card-date'>
+                                    {formatedDate(order.destinations[0]?.end_date) || 'Unknown Date'}
+                                    <br />
+                                    <span>
+                                        {formattedHours(order.destinations[0]?.end_date) || 'Unknown Time'}
+                                    </span>
+                                </p>
+                             
+                            </div>
 
+                            </div>
                             <div className='order-page-card-buttons'>
 
 
@@ -216,7 +214,7 @@ const Order = (orders: OrderProps['orders']) => {
 
                         </div>
 
-                    </div >
+                   
                 </div>
             ))}
 
